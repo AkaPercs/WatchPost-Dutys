@@ -1,59 +1,54 @@
 using System.Collections;
-using System.Collections.Generic; // Add this line for the generic Queue type
+using System.Collections.Generic;
 using UnityEngine;
 
-public class QueueManager : MonoBehaviour
+public class QueueSystem : MonoBehaviour
 {
-    public Transform[] spawnPoints;
-    public float timeBetweenMoves = 2f;
+    public Transform spawnPoint; // Set this in the Unity editor to your spawn point
+    public GameObject characterPrefab; // Set this in the Unity editor to your character prefab
+    public int maxQueueSize = 5; // Adjust the maximum queue size as needed
 
-    private Queue<Character> characterQueue = new Queue<Character>();
-    private int currentSpawnIndex = 0;
+    private Queue<GameObject> characterQueue = new Queue<GameObject>();
 
-    void Start()
+    void Update()
     {
-        // Spawn initial characters
-        SpawnCharacter();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnCharacter();
+        }
     }
 
     void SpawnCharacter()
     {
-        // Check if there are more spawn points
-        if (currentSpawnIndex < spawnPoints.Length)
+        if (characterQueue.Count < maxQueueSize)
         {
-            // Spawn a new character at the next spawn point
-            GameObject characterObject = new GameObject("Character");
-            characterObject.transform.position = spawnPoints[currentSpawnIndex].position;
-
-            // Attach the Character script to the character object
-            Character character = characterObject.AddComponent<Character>();
-            characterQueue.Enqueue(character);
-
-            // Increment the spawn index for the next character
-            currentSpawnIndex++;
-
-            // Start moving the characters in sequence
-            StartCoroutine(MoveCharacters());
+            GameObject newCharacter = Instantiate(characterPrefab, CalculateSpawnPosition(), Quaternion.identity);
+            characterQueue.Enqueue(newCharacter);
+            UpdateQueuePositions();
         }
         else
         {
-            Debug.Log("All characters spawned.");
+            Debug.Log("Queue is full. Cannot spawn more characters.");
         }
     }
 
-    IEnumerator MoveCharacters()
+    void UpdateQueuePositions()
     {
-        while (characterQueue.Count > 0)
+        int index = 0;
+        foreach (GameObject character in characterQueue)
         {
-            Character currentCharacter = characterQueue.Dequeue();
-            currentCharacter.isMoving = true;
-
-            yield return new WaitForSeconds(timeBetweenMoves);
-
-            currentCharacter.isMoving = false;
-
-            // Spawn the next character in line
-            SpawnCharacter();
+            if (character != null) // Ensure the character still exists
+            {
+                Vector3 newPosition = CalculateSpawnPosition() + new Vector3(index * 2f, 0f, 0f);
+                character.transform.position = newPosition;
+                index++;
+            }
         }
+    }
+
+    Vector3 CalculateSpawnPosition()
+    {
+        // Calculate the spawn position based on the spawn point's position
+        return spawnPoint.position + new Vector3(characterQueue.Count * 2f, 0f, 0f);
     }
 }
