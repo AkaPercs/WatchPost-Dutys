@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Character/Hair/CloverHair Brown (1).png.meta
 guid: de348fec019a84840ab3e5c78859b59c
+========
+guid: bebea71687781984e81c913902eee6c7
+>>>>>>>> c7cf048717e159b981bd48f53437cf57ca3c0606:Assets/Character/Hair/Female Eyes/round blue eyes (1).png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Character/Hair/SpikyBlackHair.png.meta
 guid: 067dc75c265ac4a41bcfded52704add9
+========
+guid: d910c5e0f30e6fc48b533a9d2170870c
+>>>>>>>> c7cf048717e159b981bd48f53437cf57ca3c0606:Assets/Character/Hair/Female Eyes/brown eyes.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
