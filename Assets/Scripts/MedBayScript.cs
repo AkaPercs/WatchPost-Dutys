@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MoveCharacters : MonoBehaviour
 {
-    public float moveSpeed = 2.5f; // Adjust the speed as needed
+    public float moveSpeed = 4f; // Adjust the speed as needed
     private bool isMoving = false;
 
     void Update()
@@ -17,6 +17,9 @@ public class MoveCharacters : MonoBehaviour
     public void StartMovingCharacters()
     {
         isMoving = true;
+
+        // Schedule the destruction of objects after 5 seconds
+        Invoke("DestroyObjects", 5f);
     }
 
     void MoveCharactersLeft()
@@ -28,5 +31,15 @@ public class MoveCharacters : MonoBehaviour
             character.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
     }
-}
 
+    void DestroyObjects()
+    {
+        // Find all objects with the "Character" tag and destroy them
+        GameObject[] characters = GameObject.FindGameObjectsWithTag("Character");
+
+        foreach (GameObject character in characters)
+        {
+            Destroy(character);
+        }
+    }
+}

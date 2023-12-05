@@ -1,76 +1,64 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class QueueSystem : MonoBehaviour
+public class CharacterSpawner : MonoBehaviour
 {
-    public Transform spawnPoint; // Set this in the Unity editor to your spawn point
-    public GameObject characterPrefab; // Set this in the Unity editor to your character prefab
-    public int maxQueueSize = 5; // Adjust the maximum queue size as needed
-    public float backgroundSpawnOffset = -1.0f; // Adjust this offset to spawn characters in the background
-    public float spawnDelay = 2.0f; // Adjust the delay in seconds
+    public GameObject[] characterPrefabs; // Array of different character prefabs
 
-    private Queue<GameObject> characterQueue = new Queue<GameObject>();
-    private int characterCounter = 1; // Counter for unique character names
+    private int currentCharacterIndex = 0; // Index to track the current character
+    private bool isCharacterSpawned = false; // Flag to check if a character is already spawned
 
+    // Start is called before the first frame update
     void Start()
     {
-        // Assuming you have a button GameObject with a Button component attached
-        Button yourUIButton = FindObjectOfType<Button>();
-
-        // Attach a method to the button's onClick event
-        yourUIButton.onClick.AddListener(SpawnCharacter);
+        // You can remove this if you don't want to automatically start spawning characters
+        StartCoroutine(SpawnNextCharacterAfterDelay());
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("o") || Input.GetKeyDown(KeyCode.O))
+        // Check for space bar press and make sure a character is not already spawned
+        if (Input.GetKeyDown(KeyCode.Space) && !isCharacterSpawned)
         {
-            SpawnCharacter();
+            SpawnNextCharacter();
         }
     }
 
-    void SpawnCharacter()
+    // Method to spawn the next character
+    void SpawnNextCharacter()
     {
-        InvokeRepeating("SpawnCharacterDelayed", 0f, spawnDelay);
-    }
-
-    void SpawnCharacterDelayed()
-    {
-        if (characterQueue.Count < maxQueueSize)
+        if (currentCharacterIndex < characterPrefabs.Length)
         {
-            GameObject newCharacter = Instantiate(characterPrefab, CalculateSpawnPosition(), Quaternion.identity);
-            newCharacter.name = "Character" + characterCounter; // Set a unique name for each character
-            characterCounter++;
+            GameObject characterPrefab = characterPrefabs[currentCharacterIndex];
+            GameObject character = Instantiate(characterPrefab, transform.position, Quaternion.identity);
 
-            characterQueue.Enqueue(newCharacter);
-            UpdateQueuePositions();
-        }
-        else
-        {
-            Debug.Log("Queue is full. Cannot spawn more characters.");
-            CancelInvoke("SpawnCharacterDelayed"); // Stop repeating if the queue is full
-        }
-    }
+            // You can customize the spawn position and rotation as needed
+            character.transform.position = transform.position;
+            character.transform.rotation = Quaternion.identity;
 
-    void UpdateQueuePositions()
-    {
-        int index = 0;
-        foreach (GameObject character in characterQueue)
-        {
-            if (character != null) // Ensure the character still exists
-            {
-                Vector3 newPosition = CalculateSpawnPosition() + new Vector3(index * 2f, 0f, 0f);
-                character.transform.position = newPosition;
-                index++;
-            }
+            // Increment the character index for the next spawn
+            currentCharacterIndex++;
+
+            // Set the flag to indicate that a character is spawned
+            isCharacterSpawned = true;
+
+            // Start a coroutine to reset the flag after a delay (optional)
+            StartCoroutine(ResetSpawnFlag());
         }
     }
 
-    Vector3 CalculateSpawnPosition()
+    // Coroutine to reset the character spawn flag after a delay (optional)
+    IEnumerator ResetSpawnFlag()
     {
-        // Calculate the spawn position based on the spawn point's position with a background offset on the Z-axis
-        return spawnPoint.position + new Vector3(0f, 0f, backgroundSpawnOffset);
+        yield return new WaitForSeconds(2.0f);
+        isCharacterSpawned = false;
+    }
+
+    // Coroutine to spawn the next character after a delay (optional)
+    IEnumerator SpawnNextCharacterAfterDelay()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SpawnNextCharacter();
     }
 }

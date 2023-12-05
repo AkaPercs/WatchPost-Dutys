@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Character2
   - Character3
+  - BloodTest
   layers:
   - Default
   - TransparentFX
