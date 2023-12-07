@@ -10,6 +10,8 @@ TagManager:
   - Character2
   - Character3
   - BloodTest
+  - XRay
+  - DeepScan
   layers:
   - Default
   - TransparentFX

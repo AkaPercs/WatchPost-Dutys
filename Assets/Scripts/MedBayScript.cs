@@ -3,23 +3,32 @@ using UnityEngine;
 public class MoveCharacters : MonoBehaviour
 {
     public float moveSpeed = 4f; // Adjust the speed as needed
+    public float destroyAfterSeconds = 3f; // Set the duration after which characters should be destroyed
     private bool isMoving = false;
+    private float timer = 0f;
 
     void Update()
     {
         if (isMoving)
         {
             MoveCharactersLeft();
+            UpdateTimer();
         }
     }
 
-    // Function called when the button is clicked
+    // Function called to start moving characters
     public void StartMovingCharacters()
     {
         isMoving = true;
+    }
 
-        // Schedule the destruction of objects after 5 seconds
-        Invoke("DestroyObjects", 5f);
+    // Function called to stop or reset the movement
+    public void ResetMovement()
+    {
+        isMoving = false;
+
+        // Additional reset logic if needed
+        timer = 0f;
     }
 
     void MoveCharactersLeft()
@@ -32,14 +41,27 @@ public class MoveCharacters : MonoBehaviour
         }
     }
 
-    void DestroyObjects()
+    void UpdateTimer()
     {
-        // Find all objects with the "Character" tag and destroy them
+        timer += Time.deltaTime;
+
+        // Check if the timer has exceeded the specified duration
+        if (timer >= destroyAfterSeconds)
+        {
+            DestroyCharacters();
+        }
+    }
+
+    void DestroyCharacters()
+    {
         GameObject[] characters = GameObject.FindGameObjectsWithTag("Character");
 
         foreach (GameObject character in characters)
         {
             Destroy(character);
         }
+
+        // Optionally, reset variables for reuse
+        ResetMovement();
     }
 }

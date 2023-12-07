@@ -1,25 +1,28 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSpawner : MonoBehaviour
 {
     public GameObject[] characterPrefabs; // Array of different character prefabs
+    public Button medbayButton; // Reference to the UI button for the medbay
+    public KeyCode spawnKey = KeyCode.Space; // Key to spawn the character
 
     private int currentCharacterIndex = 0; // Index to track the current character
     private bool isCharacterSpawned = false; // Flag to check if a character is already spawned
 
-    // Start is called before the first frame update
-    void Start()
+    private GameObject currentCharacter; // Reference to the currently spawned character
+
+    private void Start()
     {
-        // You can remove this if you don't want to automatically start spawning characters
-        StartCoroutine(SpawnNextCharacterAfterDelay());
+        // Subscribe to the button click event
+        medbayButton.onClick.AddListener(SpawnNextCharacter);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Check for space bar press and make sure a character is not already spawned
-        if (Input.GetKeyDown(KeyCode.Space) && !isCharacterSpawned)
+        // Check for the space bar press
+        if (Input.GetKeyDown(spawnKey))
         {
             SpawnNextCharacter();
         }
@@ -28,14 +31,20 @@ public class CharacterSpawner : MonoBehaviour
     // Method to spawn the next character
     void SpawnNextCharacter()
     {
+        // If a character is already spawned, destroy it before spawning the next one
+        if (currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+        }
+
         if (currentCharacterIndex < characterPrefabs.Length)
         {
             GameObject characterPrefab = characterPrefabs[currentCharacterIndex];
-            GameObject character = Instantiate(characterPrefab, transform.position, Quaternion.identity);
+            currentCharacter = Instantiate(characterPrefab, transform.position, Quaternion.identity);
 
             // You can customize the spawn position and rotation as needed
-            character.transform.position = transform.position;
-            character.transform.rotation = Quaternion.identity;
+            currentCharacter.transform.position = transform.position;
+            currentCharacter.transform.rotation = Quaternion.identity;
 
             // Increment the character index for the next spawn
             currentCharacterIndex++;
@@ -45,6 +54,13 @@ public class CharacterSpawner : MonoBehaviour
 
             // Start a coroutine to reset the flag after a delay (optional)
             StartCoroutine(ResetSpawnFlag());
+
+            // Reset the movement script
+            MoveCharacters moveScript = FindObjectOfType<MoveCharacters>();
+            if (moveScript != null)
+            {
+                moveScript.ResetMovement();
+            }
         }
     }
 
@@ -53,12 +69,5 @@ public class CharacterSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         isCharacterSpawned = false;
-    }
-
-    // Coroutine to spawn the next character after a delay (optional)
-    IEnumerator SpawnNextCharacterAfterDelay()
-    {
-        yield return new WaitForSeconds(2.0f);
-        SpawnNextCharacter();
     }
 }
