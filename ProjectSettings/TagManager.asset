@@ -12,6 +12,17 @@ TagManager:
   - BloodTest
   - XRay
   - DeepScan
+  - Flash
+  - Character4
+  - Character5
+  - Character6
+  - Character7
+  - Character8
+  - Character9
+  - Character10
+  - Bullet
+  - BloodPopup
+  - BloodPopupText
   layers:
   - Default
   - TransparentFX

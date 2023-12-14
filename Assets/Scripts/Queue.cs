@@ -31,6 +31,12 @@ public class CharacterSpawner : MonoBehaviour
     // Method to spawn the next character
     void SpawnNextCharacter()
     {
+        // If a character is already spawned, and it's not destroyed, do not spawn the next one
+        if (currentCharacter != null && currentCharacter.activeSelf)
+        {
+            return;
+        }
+
         // If a character is already spawned, destroy it before spawning the next one
         if (currentCharacter != null)
         {
@@ -52,9 +58,6 @@ public class CharacterSpawner : MonoBehaviour
             // Set the flag to indicate that a character is spawned
             isCharacterSpawned = true;
 
-            // Start a coroutine to reset the flag after a delay (optional)
-            StartCoroutine(ResetSpawnFlag());
-
             // Reset the movement script
             MoveCharacters moveScript = FindObjectOfType<MoveCharacters>();
             if (moveScript != null)
@@ -62,12 +65,5 @@ public class CharacterSpawner : MonoBehaviour
                 moveScript.ResetMovement();
             }
         }
-    }
-
-    // Coroutine to reset the character spawn flag after a delay (optional)
-    IEnumerator ResetSpawnFlag()
-    {
-        yield return new WaitForSeconds(2.0f);
-        isCharacterSpawned = false;
     }
 }

@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoaders : MonoBehaviour
 {
     // Public method to load the "Hex" scene
     public void LoadHexScene()
     {
-        SceneManager.LoadScene("Hex");
+        SceneManager.LoadScene("NewMain");
     }
 }

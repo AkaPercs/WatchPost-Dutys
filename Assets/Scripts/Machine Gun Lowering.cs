@@ -3,9 +3,9 @@ using System.Collections;
 
 public class MoveTurretsDown : MonoBehaviour
 {
-    public float moveDownSpeed = 1.0f; // Adjust the speed as needed for moving down
-    public float moveBackSpeed = 0.5f; // Adjust the speed as needed for moving back
-    public float distanceToMove = 2.5f; // Adjust the distance to move as needed
+    public float moveDownSpeed = 3f; // Adjust the speed as needed for moving down
+    public float moveBackSpeed = 5f; // Adjust the speed as needed for moving back
+    public float distanceToMove = 8.5f; // Adjust the distance to move as needed
     [SerializeField] private float delayBeforeMoveBack = 5f; // Expose the delayBeforeMoveBack as a serialized field
     private Vector3[] initialPositions;
 

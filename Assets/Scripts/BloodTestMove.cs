@@ -3,11 +3,11 @@ using System.Collections;
 
 public class BloodTestMoving : MonoBehaviour
 {
-    public float moveSpeed = 2.5f; // Adjust the speed as needed
-    public float rightwardDistance = 5f; // Adjust the rightward movement distance
-    public float moveDuration = 1f; // Adjust the duration of the initial movement
-    public float pauseDuration = 2f; // Adjust the duration to pause at the new position
-    public float returnDuration = 2f; // Adjust the duration for the return movement
+    public float moveSpeed = 2.5f;
+    public float rightwardDistance = 5f;
+    public float moveDuration = 1f;
+    public float pauseDuration = 2f;
+    public float returnDuration = 2f;
     private bool isMoving = false;
     private float elapsedTime = 0f;
     private Vector3[] originalPositions;
