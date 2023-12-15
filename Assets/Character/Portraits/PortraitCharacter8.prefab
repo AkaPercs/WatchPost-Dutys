@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1587500661598539064}
   m_Layer: 0
   m_Name: dress
-  m_TagString: Untagged
+  m_TagString: Character8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 131253725499748388}
   m_Layer: 0
   m_Name: ginger
-  m_TagString: Untagged
+  m_TagString: Character8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2452555343527117726}
   m_Layer: 0
   m_Name: gree eyes 1
-  m_TagString: Untagged
+  m_TagString: Character8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 196352025701673303}
   m_Layer: 0
   m_Name: Halfbody Woman brown
-  m_TagString: Untagged
+  m_TagString: Character8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 2602251886163725343}
   m_Layer: 0
   m_Name: smile wide
-  m_TagString: Untagged
+  m_TagString: Character8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

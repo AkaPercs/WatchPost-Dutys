@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 731999143251456557}
   m_Layer: 0
   m_Name: w smile
-  m_TagString: Untagged
+  m_TagString: Character4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3327431614904244729}
   m_Layer: 0
   m_Name: round blue eyes
-  m_TagString: Untagged
+  m_TagString: Character4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1544438149
   m_SortingLayer: -1
-  m_SortingOrder: 6
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 48dda96b7fb24e844a4307c25ee15458, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 7286935851690881242}
   m_Layer: 0
   m_Name: Halfbody Woman brown (1)
-  m_TagString: Untagged
+  m_TagString: Character4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1544438149
   m_SortingLayer: -1
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: c8de626812d3560418c7e667510e3bd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 6114263234166589756}
   m_Layer: 0
   m_Name: black
-  m_TagString: Untagged
+  m_TagString: Character4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 3120080540644035390}
   m_Layer: 0
   m_Name: blue sweater
-  m_TagString: Untagged
+  m_TagString: Character4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -444,7 +444,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1544438149
   m_SortingLayer: -1
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 670045b57b3262447a54dac5a223b8ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

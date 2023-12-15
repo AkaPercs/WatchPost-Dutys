@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6450549224452544150}
   m_Layer: 0
   m_Name: business casual
-  m_TagString: Untagged
+  m_TagString: Character6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 7444219817863127851}
   m_Layer: 0
   m_Name: halfbody male brown
-  m_TagString: Untagged
+  m_TagString: Character6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 6570269944971327606}
   m_Layer: 0
   m_Name: blocky brown eyes (male)
-  m_TagString: Untagged
+  m_TagString: Character6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 965519388520374832}
   m_Layer: 0
   m_Name: male brown hair
-  m_TagString: Untagged
+  m_TagString: Character6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 255265332853022416}
   m_Layer: 0
   m_Name: ^ exp
-  m_TagString: Untagged
+  m_TagString: Character6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

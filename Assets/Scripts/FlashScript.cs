@@ -4,8 +4,9 @@ using UnityEngine;
 public class FlashSequence : MonoBehaviour
 {
     public GameObject[] flashes; // Assign the flashes in the order you want them to appear
-    public float flashDuration = 0.5f;
-    public float delayBetweenFlashes = 0.2f;
+    public float flashDuration = 0.1f;
+    public float delayBetweenFlashes = 0.1f;
+    public float delayBeforeSequence = 1.5f; // Add this variable
 
     void Start()
     {
@@ -19,6 +20,8 @@ public class FlashSequence : MonoBehaviour
 
     IEnumerator FlashSequenceCoroutine()
     {
+        yield return new WaitForSeconds(delayBeforeSequence); // Delay before starting the sequence
+
         foreach (GameObject flash in flashes)
         {
             SetFlashVisibility(flash, true);

@@ -66,4 +66,14 @@ public class CharacterSpawner : MonoBehaviour
             }
         }
     }
+
+    // Method to destroy the currently spawned character
+    public void DestroyCharacter()
+    {
+        if (currentCharacter != null)
+        {
+            Destroy(currentCharacter);
+            isCharacterSpawned = false; // Set the flag to indicate that no character is spawned
+        }
+    }
 }
